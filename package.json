@@ -1,0 +1,71 @@
+{
+  "name": "wepad-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test npm run migrate && cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register ./src/tests/main.test.js --timeout 100000 --exit",
+    "devStart": "nodemon --exec babel-node src/index.js",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "lint:fixIssues": "./node_modules/.bin/eslint . --fix",
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "start": "NODE_ENV=production npm run db-migrate && NODE_ENV=production babel-node ./src/server.js",
+    "db-migrate": "npx sequelize db:migrate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenieSereine/wepad-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenieSereine/wepad-backend/issues"
+  },
+  "homepage": "https://github.com/BenieSereine/wepad-backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "@sendgrid/mail": "^7.4.1",
+    "babel-eslint": "^10.1.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailgen": "^2.0.14",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "pg": "^8.5.1",
+    "regenerator-runtime": "^0.13.7",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "eslint": "^7.17.0",
+    "eslint-auto-fix": "^1.0.3",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7"
+  }
+}
