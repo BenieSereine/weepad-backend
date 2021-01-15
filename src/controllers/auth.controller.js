@@ -36,7 +36,7 @@ class AuthController {
 			createdAt: user.createdAt,
 			updatedAt: user.updatedAt,
 		};
-		Response.successMessage(201, 'User Sucessfully created', {
+		Response.successMessage(201, 'User is now signed up', {
 			user: data,
 			token: TokenService.generateToken(data),
 		});
@@ -50,7 +50,6 @@ class AuthController {
 */
 	static async signin(req, res) {
 		const user = await UserService.findUserByAttribute({ email: req.body.email });
-		console.log(user);
 		const userData = { ...user.dataValues };
 		delete userData.password;
 		Response.successMessage(200, 'successfully logged in', {

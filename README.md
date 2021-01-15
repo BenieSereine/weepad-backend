@@ -1,5 +1,5 @@
 # weepad-backend
-Access lovely books
+Explore your favorite books
 
 To access the repo
 - clone the repo using `git clone https://github.com/BenieSereine/weepad-backend.git`
